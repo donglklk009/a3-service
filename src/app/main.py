@@ -1,5 +1,7 @@
 import uvicorn
+from entity.request import HandReq
 from fastapi import FastAPI
+from model import hand_model
 
 app = FastAPI()
 
@@ -9,6 +11,16 @@ port: int = 8080
 
 @app.get("/")
 def read_root():
+    return {"Hello": "World"}
+
+
+@app.post("/hand")
+def hand(req: HandReq):
+    return hand_model.process(req)
+
+
+@app.post("/voice")
+def voice():
     return {"Hello": "World"}
 
 
