@@ -20,7 +20,7 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Test"}
 
 
 @app.post("/hand")
@@ -34,4 +34,4 @@ def voice():
 
 
 if __name__ == "__main__":
-    uvicorn.run("app.main:app", host=host, port=port, workers=10)
+    uvicorn.run("app.main:app", loop="asyncio", host=host, port=port, workers=10)
