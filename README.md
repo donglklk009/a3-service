@@ -1,5 +1,6 @@
-py --version
+for windows:py --version
+for ubuntu:python3 --version
 py -m pip install fastapi uvicorn pydantic
 //pytest tests
 cd a3-service/src
-py -m app.main
+python3 -m app.main

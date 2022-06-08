@@ -1,8 +1,8 @@
 import uvicorn
-from entity.request import HandReq
+from entity.request import HandReq, SpeedReq
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from model import hand_model
+from model import hand_model, robot_model
 
 app = FastAPI()
 
@@ -22,6 +22,10 @@ app.add_middleware(
 def read_root():
     return {"Test"}
 
+@app.post("/speed")
+def change_speed(req: SpeedReq):
+    return hand_model.change_speed(req)
+
 
 @app.post("/hand")
 def hand(req: HandReq):
@@ -34,4 +38,9 @@ def voice():
 
 
 if __name__ == "__main__":
+    #robot_model.forward()
+    #robot_model.reverse()
+    #robot_model.turn_left()
+    #robot_model.turn_right()
     uvicorn.run("app.main:app", loop="asyncio", host=host, port=port, workers=10)
+
